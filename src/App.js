@@ -5,14 +5,45 @@ import Gallery from './Gallery.js';
 import About from './About.js';
 import AddItem from './AddItem.js';
 function App() {
+    const [cartAdd, setCartAdd] = React.useState(false);
+    const [savedItem, setSavedItem] = React.useState(0);
 
-    const [itemTracker, setItemTracker] = React.useState(0);
+
+    function countItems(event) {
+        let btn = event.target.className;
+        setSavedItem(prevItem => {
+            if(btn === "add"){
+                return prevItem + 1;
+            }
+            else{
+                if(prevItem == 0){
+                    return prevItem;
+                }
+                else{
+                    return prevItem - 1;
+                }
+            }
+        });
+    }
+
+    function addCartItems() {
+        setCartAdd(!cartAdd);
+    }
+
     return(
         <>
-        <Navbar itemCount = {itemTracker} />
+        <Navbar 
+            itemCount = {savedItem}
+            cartMarker = {cartAdd}
+        />
         <Gallery />
         <About />
-        <AddItem itemCount = {itemTracker} />
+        <AddItem 
+            handleClickCount = {countItems} 
+            items = {savedItem}
+            handleClickCart = {addCartItems}
+
+        />
         </>
     );
 }

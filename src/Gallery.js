@@ -16,6 +16,7 @@ function Gallery() {
     function handleClick(event) {
         let btn = event.target.className;
         console.log(btn);
+        
         setCount(prevCount => {
             if(btn === "next"){
                 if(prevCount == 3){

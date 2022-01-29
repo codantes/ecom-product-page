@@ -22,6 +22,7 @@
 nav{
     display: flex;
     align-items: center;
+    justify-items: flex-start;
     padding: 1rem;
     position: relative;
 }
@@ -31,6 +32,27 @@ nav img{
     margin:0 .5rem;
 }
 
+.cart{
+    margin-left: auto;
+    position: relative;
+}
+
+.cart span{
+    text-align: center;
+    align-items: center;
+    z-index: 2;
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    font-size: 12px;
+    font-weight: 700;
+    top: -35%;
+    right: 14%;
+    background: var(--sub-heading);
+    border-radius: 10px;
+    color: white;
+}
+
 .cart-icon{
     margin-left: auto;
 }
@@ -38,6 +60,7 @@ nav img{
 .user-icon{
     height: 2rem;
     width: 2rem;
+
 }
 
 .menu-icon{
@@ -158,6 +181,7 @@ nav img{
     margin: 0 1rem;
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .item-counter p{
@@ -177,6 +201,7 @@ nav img{
     border: none;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .prices{

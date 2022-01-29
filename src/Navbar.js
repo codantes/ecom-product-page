@@ -2,7 +2,6 @@ import React from "react";
 
 function Navbar(props){
     const [menuDisplay, setMenuDisplay] = React.useState(false);
-    const [cartItem, setCartItem] = React.useState(props.itemCount);
 
     function menuSwitch(){
         setMenuDisplay(!menuDisplay);
@@ -13,6 +12,7 @@ function Navbar(props){
         <nav>
             <img className="menu-icon" onClick={menuSwitch} src="./images/icon-menu.svg" />
             <img className="logo" src="./images/logo.svg" alt="" />
+
             {
                 menuDisplay &&
                 <div className="menu">
@@ -26,10 +26,12 @@ function Navbar(props){
                     </ul>
                 </div>
             }
+
             <div className="cart">
                 <img className="cart-icon" src="./images/icon-cart.svg" />
-                <span className="cart-itemes">{cartItem}</span>
-                </div>
+                {((props.itemCount > 0)&&(props.cartMarker == true)) && <span className="cart-itemes">{props.itemCount}</span>}
+            </div>
+            
             <img className="user-icon" src="./images/image-avatar.png" />
         </nav>
     )
