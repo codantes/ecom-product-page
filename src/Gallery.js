@@ -1,17 +1,8 @@
 import React from 'react';
+import data from './data.js';
 
 function Gallery() {
-
     const [count, setCount] = React.useState(0);
-
-
-    //array for all gallery images
-    const images = [
-        "./images/image-product-1.jpg",
-        "./images/image-product-2.jpg",
-        "./images/image-product-3.jpg",
-        "./images/image-product-4.jpg"
-    ];
 
     function handleClick(event) {
         let btn = event.target.className;
@@ -45,7 +36,7 @@ function Gallery() {
                 <img className='prev' src="./images/icon-previous.svg" alt="sneaker-image" />
             </button>
 
-            <img src={images[count]} />
+            <img src={data.galleryImages[count]} />
 
             <button id='next-btn' className='next' onClick={handleClick}>
                 <img src="./images/icon-next.svg" className='next' alt="sneaker-image"  />

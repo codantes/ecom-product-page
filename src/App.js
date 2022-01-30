@@ -5,7 +5,7 @@ import Gallery from './Gallery.js';
 import About from './About.js';
 import AddItem from './AddItem.js';
 function App() {
-    const [cartAdd, setCartAdd] = React.useState(false);
+const [cartAdd, setCartAdd] = React.useState(false)
     const [savedItem, setSavedItem] = React.useState(0);
 
 
@@ -30,11 +30,16 @@ function App() {
         setCartAdd(!cartAdd);
     }
 
+    function removeItems(){
+        setSavedItem(0);
+    }
+
     return(
         <>
         <Navbar 
             itemCount = {savedItem}
             cartMarker = {cartAdd}
+            removeItemsHandleClick = {removeItems}
         />
         <Gallery />
         <About />

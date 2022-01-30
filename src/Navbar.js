@@ -1,11 +1,18 @@
 import React from "react";
+import Basket from './Basket.js';
+
 
 function Navbar(props){
     const [menuDisplay, setMenuDisplay] = React.useState(false);
+    const [basketDisplay, setBasketDisplay] = React.useState(false);
 
     function menuSwitch(){
         setMenuDisplay(!menuDisplay);
         console.log(menuDisplay);
+    }
+
+    function basketSwitch(){
+        setBasketDisplay(!basketDisplay);
     }
 
     return(
@@ -27,10 +34,19 @@ function Navbar(props){
                 </div>
             }
 
-            <div className="cart">
+            <div className="cart-btn" onClick={basketSwitch}>
                 <img className="cart-icon" src="./images/icon-cart.svg" />
                 {((props.itemCount > 0)&&(props.cartMarker == true)) && <span className="cart-itemes">{props.itemCount}</span>}
             </div>
+
+            {basketDisplay &&
+
+            <Basket 
+                basketItems = {props.itemCount} 
+                basketHandleClick = {basketSwitch}
+                basketAddItemHandleClick = {props.cartMarker}
+                removeItemsHandleClick = {props.removeItemsHandleClick}
+            />}
             
             <img className="user-icon" src="./images/image-avatar.png" />
         </nav>
