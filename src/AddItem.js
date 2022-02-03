@@ -6,11 +6,9 @@ function AddItem(props) {
     return (
         <section className="add-item">
             <div className="prices">
-                <h1>
-                    <span className="selling">$125 </span>
-                    <span className="discount">50% </span>
-                    <span className="original-price">$250</span>
-                </h1>
+                    <h1 className="selling">$125 </h1>
+                    <h2 className="discount">50% </h2>
+                    <h3 className="original-price">$250</h3>
             </div>
 
             <div className="item-counter">

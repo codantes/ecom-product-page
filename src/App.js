@@ -5,6 +5,7 @@ import Gallery from './Gallery.js';
 import About from './About.js';
 import AddItem from './AddItem.js';
 function App() {
+/*--maintaining the state of the items in the cart--*/
 const [cartAdd, setCartAdd] = React.useState(false)
     const [savedItem, setSavedItem] = React.useState(0);
 
@@ -32,6 +33,7 @@ const [cartAdd, setCartAdd] = React.useState(false)
 
     function removeItems(){
         setSavedItem(0);
+        setCartAdd(!cartAdd);
     }
 
     return(
@@ -41,6 +43,8 @@ const [cartAdd, setCartAdd] = React.useState(false)
             cartMarker = {cartAdd}
             removeItemsHandleClick = {removeItems}
         />
+        <main>
+            
         <Gallery />
         <About />
         <AddItem 
@@ -49,6 +53,7 @@ const [cartAdd, setCartAdd] = React.useState(false)
             handleClickCart = {addCartItems}
 
         />
+        </main>
         </>
     );
 }

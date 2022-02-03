@@ -4,16 +4,25 @@ import Basket from './Basket.js';
 
 function Navbar(props){
     const [menuDisplay, setMenuDisplay] = React.useState(false);
+    const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
     const [basketDisplay, setBasketDisplay] = React.useState(false);
 
     function menuSwitch(){
         setMenuDisplay(!menuDisplay);
-        console.log(menuDisplay);
     }
 
     function basketSwitch(){
         setBasketDisplay(!basketDisplay);
     }
+
+    React.useEffect(() => {
+
+        const changeWidth = () => {
+            setScreenWidth(window.innerWidth)
+        }
+
+        window.addEventListener('resize', changeWidth);
+    }, []);
 
     return(
         <nav>
@@ -21,7 +30,7 @@ function Navbar(props){
             <img className="logo" src="./images/logo.svg" alt="" />
 
             {
-                menuDisplay &&
+                (menuDisplay || screenWidth > 900) &&
                 <div className="menu">
                     <ul className="main-menu">
                         <li ><img className="close-icon" onClick={menuSwitch} src="./images/icon-close.svg" alt="" /></li>
@@ -46,6 +55,7 @@ function Navbar(props){
                 basketHandleClick = {basketSwitch}
                 basketAddItemHandleClick = {props.cartMarker}
                 removeItemsHandleClick = {props.removeItemsHandleClick}
+                handleClickCart = {props.handleClickCart}
             />}
             
             <img className="user-icon" src="./images/image-avatar.png" />
