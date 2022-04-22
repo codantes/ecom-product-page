@@ -1,7 +1,15 @@
 import React from 'react';
-
-function AddItem(props) {
-
+import {useSelector, useDispatch} from 'react-redux';
+import { actions } from './store/store';
+ function AddItem(props) {
+    const counter = useSelector((state) => state.counter);
+    const dispatch = useDispatch();
+    const add = () => {
+        dispatch(actions.add())
+    };
+    const remove = () => {
+        dispatch(actions.remove())
+    }
    
     return (
         <section className="add-item">
@@ -12,11 +20,11 @@ function AddItem(props) {
             </div>
 
             <div className="item-counter">
-                <button onClick={props.handleClickCount} className='add'><img className='add'  src="./images/icon-plus.svg" alt="" /></button>
+                <button onClick={add} className='add'><img className='add'  src="./images/icon-plus.svg" alt="" /></button>
 
-                <div className="item-displaay"><p>{props.items}</p></div>
+                <div className="item-displaay"><p>{counter}</p></div>
 
-                <button onClick={props.handleClickCount} className="remove"><img className="remove" src="./images/icon-minus.svg" alt="" /></button>
+                <button onClick={remove} className="remove"><img className="remove" src="./images/icon-minus.svg" alt="" /></button>
             </div>
 
             <button className="add-to-cart" onClick = {props.handleClickCart}>

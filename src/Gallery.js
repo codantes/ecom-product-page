@@ -153,7 +153,8 @@ function Gallery() {
                 style1={thumbnailStyle1}
                 style2={thumbnailStyle2}
                 style3={thumbnailStyle3}
-                style4={thumbnailStyle4} />
+                style4={thumbnailStyle4}
+            />
         }
 
         </section>

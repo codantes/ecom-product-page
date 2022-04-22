@@ -1,8 +1,11 @@
 import React from "react";
 import Basket from './Basket.js';
-
+import {useSelector, useDispatch} from 'react-redux';
+import { actions } from './store/store';
 
 function Navbar(props){
+    const counter = useSelector((state) => state.counter);
+
     const [menuDisplay, setMenuDisplay] = React.useState(false);
     const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
     const [basketDisplay, setBasketDisplay] = React.useState(false);
@@ -45,16 +48,13 @@ function Navbar(props){
 
             <div className="cart-btn" onClick={basketSwitch}>
                 <img className="cart-icon" src="./images/icon-cart.svg" />
-                {((props.itemCount > 0)&&(props.cartMarker == true)) && <span className="cart-itemes">{props.itemCount}</span>}
+                {((counter > 0)) && <span className="cart-itemes">{counter}</span>}
             </div>
 
             {basketDisplay &&
 
             <Basket 
-                basketItems = {props.itemCount} 
                 basketHandleClick = {basketSwitch}
-                basketAddItemHandleClick = {props.cartMarker}
-                removeItemsHandleClick = {props.removeItemsHandleClick}
                 handleClickCart = {props.handleClickCart}
             />}
             
